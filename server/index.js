@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import * as dotenv from "dotenv";
+
 import mongoose from "mongoose";
 import cors from "cors";
 
@@ -14,10 +14,11 @@ app.use(cors());
 
 app.use("/posts", postRoutes);
 
-
+const CONNECTION_URL =
+  "mongodb+srv://metoldkraft:007Sam-Lennon@cluster0.kuixq9r.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
-  .connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
     app.listen(8080, () =>
       console.log(``)
